@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: MyString
+  achievment: 1
+  act_time: 2017-09-28 14:30:41
+  act_date: MyString
+
+two:
+  task_id: MyString
+  achievment: 1
+  act_time: 2017-09-28 14:30:41
+  act_date: MyString
