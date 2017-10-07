@@ -3,34 +3,26 @@
 params;
 <%= p params %>
 <hr>
-firsttask;
-<%= p @firsttask %>
 <hr>
-msg;
-<%= p @msg %>
+<hr>
+<%= p @nextflag %>
 <hr>
 <br>
 <!-- 実行対象りすと -->
+
 <%= p @acttask.title %>
 <br>
 11111
 <br>
 <%= p @acttask.detail %>
 <br>
-<!-- 実行リストランダム -->
-<hr>
-<% $tasks.each do |msg| %>
-  <%= msg.id %> : <%= msg.title %> : <%= msg.detail %><br>
-  <br>
-<% end %>
-<hr>
-<%= link_to '実行', controller: "tasks", action: "action" %>
+
 
 
 <!-- タイマー -->
 <form name="timer">
-<input type="text" value="0">分
-<input type="text" value="2">秒<br>
+<input type="text" value="<%= @min %>">分
+<input type="text" value="0">秒<br>
 <input type="button" value="スタート" onclick="cntStart()">
 <input type="button" value="ストップ" onclick="cntStop()">
 </form>
@@ -39,7 +31,7 @@ msg;
 <input type="hidden" name="valname1" value="val1"> -->
 
 <%= form_tag(controller: "tasks",action:"action") do  %>
-  <%= hidden_field_tag :name, "test" %>
+  <%= hidden_field_tag :flag, @nextflag %>
   <%= submit_tag %>
 <% end %>
 

@@ -1,0 +1,8 @@
+<% @tasks.each do |task| %>
+  <%= task.id %> 
+  : <%= task.title %> 
+  : <%= task.detail %>
+  : <%= task.doneflag %><br>
+  <br>
+<% end %>
+<%= link_to '実行', controller: "tasks", action: "trend" %>

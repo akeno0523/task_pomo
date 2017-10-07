@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 	get 'tasks/action'
 	post 'tasks/action'
 	post 'tasks/tasks/action' => 'tasks#action'
+	get 'tasks/result'  => 'tasks#result'
+	post 'tasks/update' => 'tasks#update'
+	get 'tasks/trend'  => 'tasks#trend'
 
 	resources(:tasks)
 	

@@ -1,24 +1,27 @@
 <h1>実行リスト</h1>
 
 <%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <% @task.errors.full_tasks.each do |err| %>
-      <font color="red"><%= err %></font><br>
-    <% end %>
-  <% end %>
+
 
   <div><%= f.text_field :title %></div>
   <div><%= f.text_field :detail %></div>
+  <div><%= f.hidden_field :user_id, value:current_user.id %></div>
   <%= f.submit %><br>
 <% end %>
 <hr>
-
-<% @tasks.each do |msg| %>
-  <%= msg.id %> : <%= msg.title %> : <%= msg.detail %><br>
+<%= link_to '実行', controller: "tasks", action: "action" %>
+<hr>
+本日の未実行タスク
+<% @falsetasks.each do |task| %>
+  <%= task.id %> : <%= task.title %> : <%= task.detail %><br>
   <br>
 <% end %>
 <hr>
-<%= link_to '実行', controller: "tasks", action: "action" %>
+本日の実行済みタスク
+<% @truetasks.each do |task| %>
+  <%= task.id %> : <%= task.title %> : <%= task.detail %><br>
+  <br>
+<% end %>
 
 
 
