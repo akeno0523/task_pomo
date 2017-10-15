@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 	post 'tasks/tasks/action' => 'tasks#action'
 	get 'tasks/result'  => 'tasks#result'
 	post 'tasks/update' => 'tasks#update'
+	get 'tasks/updateflag'  => 'tasks#updateflag'
+	post 'tasks/updateflag'  => 'tasks#updateflag'
 	get 'tasks/trend'  => 'tasks#trend'
 
 	resources(:tasks)

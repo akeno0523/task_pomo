@@ -1,3 +1,36 @@
 // Place all the styles related to the task controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page-header{
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  padding-bottom: 20px;
+  margin: 0 auto 40px;
+  font-weight: 200;
+}
+
+.orange{
+  color: #FF9A4B;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.marginadd {
+  margin-top: 25px;
+  text-align: left;
+  line-height: 25px;
+}
+
+.seemore {
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid white;
+  margin-top: 30px;
+  background-color: #FF8525;
+  color: white;
+}

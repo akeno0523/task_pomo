@@ -1,48 +1,29 @@
-
-<hr>
-params;
-<%= p params %>
-<hr>
-<hr>
-params;
-<%= p @task %>
-<hr>
-<hr>
-params;
-<%= p @tasks[0].title %>
-<hr>
-
-
 本日のタスクが実行できたのか確認
 
 
 
-<%= form_for @task, :url => {:action => :update } do |f| %>
-	<table >
-		<tr>
-			<td ><%= f.submit "更新" %>
-		</tr>
+<%= form_for @task, :url => {:action => :updateflag } do |f| %>
+<%= f.submit "更新" %>
+<%= link_to '傾向', tasks_trend_path %>
+
+	<table class="table table-hover">
+		<thead>
 			<tr >
 				<th>title</th>
 				<th>detail</th>
 				<th>flag</th>
 			</tr>
+		</thead>
+		<tbody>
 			<% @tasks.each_with_index{|r, idx| @r = r %>
 			<tr>
 				<td><%= @r.title %></td>
 				<td><%= @r.detail %></td>
-				<td><%= f.select 'r',  ["true","false"], {:selected=>@r.doneflag, :index => idx} %></td>
+				<td><%= f.select @r.id,  ["true","false"], {:selected=>@r.doneflag, :index => idx} %></td>
 			</tr>
-		<%}%>
+			<%}%>
+		</tbody>
 	</table>
 <% end %>
 
-	<hr>
-	<% @tasks.each do |task| %>
-	<%= task.id %> 
-	: <%= task.title %> 
-	: <%= task.detail %>
-	: <%= task.doneflag %><br>
-	<br>
-	<% end %>
-	<%= link_to '実行', controller: "tasks", action: "trend" %>
+

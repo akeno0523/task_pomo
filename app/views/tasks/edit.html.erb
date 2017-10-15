@@ -1,0 +1,22 @@
+<h1>Task#edit</h1>
+<pre>
+	
+		<%= form_for(@task, url:{controller:'tasks',action:'update',id:@task.id}) do |form|%>
+		<table>
+		<tr>
+			<th>Title</th>
+			<td><%= form.text_field :title %></td>
+		</tr>
+		<tr>
+			<th>detail</th>
+			<td><%= form.text_field :detail %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<%= form.hidden_field :user_id, value:current_user.id %>
+			<td><%= form.submit "送信" %></td>
+		</tr>
+		</table>
+		<% end %>
+	
+</pre>

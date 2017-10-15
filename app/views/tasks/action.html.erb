@@ -1,22 +1,17 @@
-
-<hr>
-params;
-<%= p params %>
-<hr>
-<hr>
-<hr>
-<%= p @nextflag %>
-<hr>
-<br>
-<!-- 実行対象りすと -->
-
-<%= p @acttask.title %>
-<br>
-11111
-<br>
-<%= p @acttask.detail %>
-<br>
-
+<div class="container text-center">
+   <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>実施内容</th>
+      </tr>
+    </thead>
+    <tbody>
+        <td><%= @acttask.title %></td>
+        <td><%= @acttask.detail %></td>
+      </tr>
+    </tbody>
+  </table>
 
 
 <!-- タイマー -->
@@ -27,13 +22,12 @@ params;
 <input type="button" value="ストップ" onclick="cntStop()">
 </form>
 
-<!-- <form name="sampleform" action="action" method="POST">
-<input type="hidden" name="valname1" value="val1"> -->
-
 <%= form_tag(controller: "tasks",action:"action") do  %>
   <%= hidden_field_tag :flag, @nextflag %>
   <%= submit_tag %>
 <% end %>
+
+</div>
 
 <!-- スクリプト -->
 <script>

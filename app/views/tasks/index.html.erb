@@ -1,28 +1,60 @@
-<h1>実行リスト</h1>
+
+<div class="container text-center">
+<h1>実行リスト作成</h1>
 
 <%= form_for(@task) do |f| %>
-
-
-  <div><%= f.text_field :title %></div>
-  <div><%= f.text_field :detail %></div>
+<div class="container-fluid">
+<div class="table-responsive">
+  <div>タスク名：<%= f.text_field :title %></div>
+  <div>実施内容：<%= f.text_field :detail %></div>
   <div><%= f.hidden_field :user_id, value:current_user.id %></div>
-  <%= f.submit %><br>
-<% end %>
-<hr>
-<%= link_to '実行', controller: "tasks", action: "action" %>
-<hr>
-本日の未実行タスク
-<% @falsetasks.each do |task| %>
-  <%= task.id %> : <%= task.title %> : <%= task.detail %><br>
+  <div><%= f.submit %></div>
   <br>
 <% end %>
+</div>
 <hr>
-本日の実行済みタスク
-<% @truetasks.each do |task| %>
-  <%= task.id %> : <%= task.title %> : <%= task.detail %><br>
-  <br>
-<% end %>
+</div>
+</div>
 
+<div class="container">
+  <h2 class="page-header ">本日の未実行タスク => <%= link_to '実行', controller: "tasks", action: "action" %></h2>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>実施内容</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><% @falsetasks.each do |task| %>
+        <td><%= task.title %></td>
+        <td><%= task.detail %></td>
+        <td><%= link_to 'Edit', edit_task_path(task.id) %></td>
+        <td><%= link_to 'Destroy', task_path(task.id), :method => :delete %></td>
+      </tr><% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <h2 class="page-header orange">本日の実行済みタスク</h2>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">タイトル</th>
+        <th class="text-center">実施内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><% @truetasks.each do |task| %>
+        <td class="text-center"><%= task.title %></td>
+        <td class="text-center"><%= task.detail %></td>
+      </tr><% end %>
+    </tbody>
+  </table>
+</div>
 
 
 

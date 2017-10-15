@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TaskPomodoro</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>TaskPomodoro</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <% if user_signed_in? %>
-      Logged in as <%= current_user.email %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %> |
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+<body>
+  <!-- header-content -->
+  <nav class="container navbar header-color">
+    <div class="pc-menu" id="title">
+      <a class="navbar-brand">ポモドーロ</a>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="menu-box" href="#favorite_section" title="">ポモドーロとは</a></li>
+        <li><%= link_to '実行リスト作成', tasks_index_path %></li>
+        <li><%= link_to '結果', tasks_result_path %></li>
+        <li><%= link_to '傾向', tasks_trend_path %></li>
+        <li></li>
+        <% if user_signed_in? %>
+        <li><a href="" title="">Logged in as <%= current_user.email %></a></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>
