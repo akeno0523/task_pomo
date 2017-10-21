@@ -50,6 +50,31 @@ class TasksController < ApplicationController
     redirect_to :action => :result
   end
 
+  def trend
+    # @chart_data = {}
+    # ['日', '月', '火', '水', '木', '金', '土'].each_with_index do |dow, i|
+    # # sqlite3は、extractをサポートしていない
+    # # count_by_dow = Task.where(["extract(dow from created_at AT TIME ZONE 'UTC' AT TIME ZONE 'JST') = ? and user_id = ?", i,current_user.id]).count
+    # count_by_dow = Task.where(["strftime('%w', updated_at) = ? and user_id = ?", i,current_user.id]).count
+    # # binding.pry
+    # @chart_data.store(dow,count_by_dow)
+    # end
+    # ---------
+    @chart_data = {}
+    @dowCountNum = 0
+    @userAllTasks = Task.where(user_id: current_user.id)
+    # @userAllTasks.updated_at = @userAllTasks.updated_at.strftime('%w')
+    ['日', '月', '火', '水', '木', '金', '土'].each_with_index do |dow, i|
+    @dowCountNum = 0
+      @userAllTasks.each do |task|
+        if task.updated_at.strftime('%w').to_i == i
+          @dowCountNum = @dowCountNum + 1
+          @chart_data.store(dow,@dowCountNum)
+        end
+      end
+    end
+  end
+
   def edit
     @task = Task.find(params[:id])
   end
